@@ -1,6 +1,9 @@
 import { Header } from "../../components/Header";
 import { Summary } from "../../components/Summary";
 import { TransactionsTable } from "../../components/TransactionsTable";
+import { SearchTransaction } from "./components/SearchTransaction";
+
+import { TransactionsContainer } from "./styles";
 
 export function Transactions() {
   return (
@@ -9,7 +12,11 @@ export function Transactions() {
 
       <Summary />
 
-      <TransactionsTable />
+      <TransactionsContainer>
+        <SearchTransaction />
+
+        <TransactionsTable />
+      </TransactionsContainer>
     </div>
-  )
+  );
 }
