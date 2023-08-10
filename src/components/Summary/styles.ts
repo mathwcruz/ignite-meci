@@ -13,13 +13,14 @@ export const SummaryContainer = styled.section`
 
 interface SummaryCardProps {
   type: "deposits" | "withdrawals" | "total";
+  amount?: number;
 }
 
 const SUMMARY_CARD_ICON_COLORS = {
   deposits: "green-300",
   withdrawals: "red-300",
-  total: "white"
-} as const
+  total: "white",
+} as const;
 
 export const SummaryCard = styled.div<SummaryCardProps>`
   background-color: ${(props) => props.theme["gray-600"]};
@@ -49,6 +50,8 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   ${(props) =>
     props.type === "total" &&
     css`
-      background-color: ${props.theme["green-700"]};
+      background-color: ${!!props?.amount && props?.amount < 0
+        ? props.theme["red-700"]
+        : props.theme["green-700"]};
     `}
 `;
