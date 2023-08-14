@@ -1,7 +1,7 @@
 import { useTransactions } from "./useTransactions";
 import { Transaction } from "../interfaces/transaction";
 
-interface TransactionsSummary {
+interface Transactionsummary {
   deposits: number;
   withdrawals: number;
   total: number;
@@ -10,8 +10,8 @@ interface TransactionsSummary {
 export function useSummary() {
   const { transactions } = useTransactions();
 
-  const summary: TransactionsSummary = transactions?.reduce(
-    (acc: TransactionsSummary, transaction: Transaction) => {
+  const summary: Transactionsummary = transactions?.reduce(
+    (acc: Transactionsummary, transaction: Transaction) => {
       if (transaction.type === "deposit") {
         acc.deposits += transaction.price;
         acc.total += transaction.price;

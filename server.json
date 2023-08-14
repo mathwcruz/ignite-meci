@@ -15,6 +15,14 @@
       "category": "Sale",
       "price": 2800,
       "createdAt": "2023-08-10T12:08:23.935Z"
+    },
+    {
+      "description": "Hamburguer",
+      "price": 6,
+      "category": "Food",
+      "type": "withdrawal",
+      "createdAt": "2023-08-14T15:55:08.569Z",
+      "id": 3
     }
   ]
 }

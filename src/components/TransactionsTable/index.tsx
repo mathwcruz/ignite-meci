@@ -1,10 +1,10 @@
-import { useTransactions } from "../../hooks/useTransactions";
-import { dateFormatter, priceFormatter } from "../../utils/formatter";
+import { useTransactions } from '../../hooks/useTransactions'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
-import { TransactionsTable as Table, PriceHighlight } from "./styles";
+import { TransactionsTable as Table, PriceHighlight } from './styles'
 
 export function TransactionsTable() {
-  const { transactions } = useTransactions();
+  const { transactions } = useTransactions()
 
   return (
     <Table>
@@ -14,7 +14,7 @@ export function TransactionsTable() {
             <td>{transaction.description}</td>
             <td>
               <PriceHighlight variant={transaction.type}>
-                {transaction.type === "withdrawal" && "- "}
+                {transaction.type === 'withdrawal' && '- '}
                 {priceFormatter.format(transaction.price)}
               </PriceHighlight>
             </td>
@@ -24,5 +24,5 @@ export function TransactionsTable() {
         ))}
       </tbody>
     </Table>
-  );
+  )
 }

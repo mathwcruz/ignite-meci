@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchTransactionContainer = styled.form`
+export const SearchTransactionsContainer = styled.form`
   display: flex;
   gap: 1rem;
 
@@ -29,11 +29,16 @@ export const SearchTransactionContainer = styled.form`
     font-weight: bold;
     border-radius: 6px;
 
-    &:hover {
+    &:not(:disabled):hover {
       background-color: ${(props) => props.theme["green-500"]};
       color: ${(props) => props.theme.white};
       border-color: ${(props) => props.theme["green-500"]};
       transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
     }
   }
 `;

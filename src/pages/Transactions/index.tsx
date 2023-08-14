@@ -1,9 +1,9 @@
-import { Header } from "../../components/Header";
-import { Summary } from "../../components/Summary";
-import { TransactionsTable } from "../../components/TransactionsTable";
-import { SearchTransaction } from "./components/SearchTransaction";
+import { Header } from '../../components/Header'
+import { Summary } from '../../components/Summary'
+import { TransactionsTable } from '../../components/TransactionsTable'
+import { SearchTransactions } from './components/SearchTransactions'
 
-import { TransactionsContainer } from "./styles";
+import { TransactionsContainer } from './styles'
 
 export function Transactions() {
   return (
@@ -13,10 +13,10 @@ export function Transactions() {
       <Summary />
 
       <TransactionsContainer>
-        <SearchTransaction />
+        <SearchTransactions />
 
         <TransactionsTable />
       </TransactionsContainer>
     </div>
-  );
+  )
 }
