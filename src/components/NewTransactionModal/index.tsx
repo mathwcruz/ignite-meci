@@ -1,10 +1,9 @@
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 import * as Dialog from '@radix-ui/react-dialog'
+import { useContextSelector } from 'use-context-selector'
 import { useForm, Controller } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-
-import { useTransactions } from '../../hooks/useTransactions'
 
 import {
   Overlay,
@@ -13,10 +12,11 @@ import {
   TransactionTypesContainer,
   TransactionTypeOption,
 } from './styles'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
-  price: z.number(),
+  price: z.number().positive(),
   category: z.string(),
   type: z.enum(['withdrawal', 'deposit']),
 })
@@ -30,7 +30,12 @@ interface NewTransactionModalProps {
 export function NewTransactionModal({
   onAfterCreateTransaction,
 }: NewTransactionModalProps) {
-  const { createTransaction } = useTransactions()
+  const createTransaction = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context.createTransaction
+    },
+  )
 
   const {
     control,

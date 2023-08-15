@@ -1,9 +1,10 @@
 import { MagnifyingGlass } from 'phosphor-react'
+import { useContextSelector } from 'use-context-selector'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
-import { useTransactions } from '../../../../hooks/useTransactions'
+import { TransactionsContext } from '../../../../contexts/TransactionsContext'
 
 import { SearchTransactionsContainer } from './styles'
 
@@ -14,7 +15,9 @@ const searchTransactionsSchema = z.object({
 type SearchTransactionsInputs = z.infer<typeof searchTransactionsSchema>
 
 export function SearchTransactions() {
-  const { getTransactions } = useTransactions()
+  const getTransactions = useContextSelector(TransactionsContext, (context) => {
+    return context.getTransactions
+  })
 
   const {
     register,
